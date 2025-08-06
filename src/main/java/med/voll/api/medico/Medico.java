@@ -14,12 +14,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.direccion.Direccion;
 
+@Table(name = "medicos")
+@Entity(name = "Medico")
 @Getter // Generar de forma automatica en tiempo de compilacion todos los getters 
 @NoArgsConstructor // Crear un constructor que no tiene ningun argumento
 @AllArgsConstructor // Gera un constructor que tiene todos los argumentos
 @EqualsAndHashCode(of = "id") // El sistema identifica si dos objetos son iguales si el ID es igual
-@Table(name = "medicos")
-@Entity(name = "Medico")
 public class Medico {
     
     @Id
