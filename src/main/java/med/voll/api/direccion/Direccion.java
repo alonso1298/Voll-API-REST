@@ -1,7 +1,14 @@
 package med.voll.api.direccion;
 
-import med.voll.api.medico.Especialidad;
+import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter // Generar de forma automatica en tiempo de compilacion todos los getters 
+@NoArgsConstructor // Crear un constructor que no tiene ningun argumento
+@AllArgsConstructor // Gera un constructor que tiene todos los argumentos
+@Embeddable
 public class Direccion {
     private String calle;
     private String numero;
