@@ -13,7 +13,7 @@ import med.voll.api.paciente.PaacienteRepository;
 import med.voll.api.paciente.Paciente;
 
 @RestController
-@RequestMapping("pacientes")
+@RequestMapping("/pacientes")
 public class PacienteController {
 
     @Autowired
