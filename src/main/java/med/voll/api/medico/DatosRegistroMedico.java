@@ -5,7 +5,7 @@ import med.voll.api.direccion.DatosDireccion;
 public record DatosRegistroMedico(
     String nombre,
     String email, 
-    String telefono,
+    // String telefono,
     String documento,
     Especialidad especialidad,
     DatosDireccion direccion

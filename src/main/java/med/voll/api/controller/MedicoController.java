@@ -1,6 +1,7 @@
 package med.voll.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ public class MedicoController {
     @Autowired
     private MedicoRepository repository; 
 
+    @Transactional // abre una transaccion, la realiza y la finaliza de forma automatica
     @PostMapping
     public void registrar(@RequestBody DatosRegistroMedico datos){
         repository.save(new Medico(datos));
