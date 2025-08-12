@@ -9,6 +9,6 @@ public record DatosDireccion(
     String complemento, 
     @NotBlank String barrio,
     @NotBlank String ciudad, 
-    @NotBlank @Pattern(regexp = "\\d{4}") String codigo_postal,
+    @NotBlank @Pattern(regexp = "\\d{5}") String codigo_postal,
     @NotBlank String estado
 ) {}
