@@ -53,7 +53,7 @@ public class Medico {
 
         }
         if(datos.direccion() != null){
-            this.direccion.actualizarDireccion(datos);
+            this.direccion.actualizarDireccion(datos.direccion());
         }
     }
 }
