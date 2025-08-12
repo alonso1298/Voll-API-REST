@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,5 +44,11 @@ public class MedicoController {
     public void actualizar(@RequestBody @Valid DatosActualizacionMedico datos){
         Medico medico = repository.getReferenceById(datos.id());
         medico.actualizarInformaciones(datos);
+    }
+
+    @Transactional
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id){ // @PathVariable  indica que la variable id es la que se va a pasar a @DeleteMapping("/{id}")
+        repository.deleteById(id);
     }
 }
