@@ -18,7 +18,7 @@ import jakarta.validation.Valid;
 import med.voll.api.paciente.DatosActualizacionPaciente;
 import med.voll.api.paciente.DatosListaPaciente;
 import med.voll.api.paciente.DatosRegistroPaciente;
-import med.voll.api.paciente.PaacienteRepository;
+import med.voll.api.paciente.PacienteRepository;
 import med.voll.api.paciente.Paciente;
 
 @RestController
@@ -26,7 +26,7 @@ import med.voll.api.paciente.Paciente;
 public class PacienteController {
 
     @Autowired
-    private PaacienteRepository repository;
+    private PacienteRepository repository;
 
     @PostMapping
     @Transactional
@@ -36,7 +36,7 @@ public class PacienteController {
 
     @GetMapping
     public Page<DatosListaPaciente> listar(@PageableDefault(size = 10, sort = {"nombre"}) Pageable paginacion) {
-        return repository.findAll(paginacion).map(DatosListaPaciente::new);
+        return repository.findAllByActivoTrue(paginacion).map(DatosListaPaciente::new);
     }
 
     @PutMapping
