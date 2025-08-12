@@ -52,6 +52,6 @@ public class Paciente {
     }
 
     public void desactivar() {
-        
+        this.activo = false;
     }
 }
