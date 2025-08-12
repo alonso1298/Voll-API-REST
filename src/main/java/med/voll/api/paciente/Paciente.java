@@ -37,4 +37,8 @@ public class Paciente {
         this.telefono = datos.telefono();
         this.direccion = new Direccion(datos.direccion());
     }
+
+    public void desactivar() {
+        
+    }
 }
