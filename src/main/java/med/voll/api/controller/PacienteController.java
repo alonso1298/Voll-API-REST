@@ -39,15 +39,15 @@ public class PacienteController {
         return repository.findAllByActivoTrue(paginacion).map(DatosListaPaciente::new);
     }
 
-    @PutMapping
     @Transactional
+    @PutMapping
     public void actualizar(@RequestBody @Valid DatosActualizacionPaciente datos) {
         Paciente paciente = repository.getReferenceById(datos.id());
         paciente.actualizarInformacion(datos);
     }
 
-    @DeleteMapping
     @Transactional
+    @DeleteMapping("/{id}")
     public void eliminar(@PathVariable Long id) {
         Paciente paciente = repository.getReferenceById(id);
         paciente.desactivar();
