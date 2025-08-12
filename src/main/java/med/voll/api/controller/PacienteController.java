@@ -37,26 +37,39 @@ public class PacienteController {
         var paciente = new Paciente(datos);
         repository.save(paciente);
 
-        var uri = uriBuilder.path("/pacientes/{id}").buildAndExpand(paciente.getId());
-        return ResponseEntity.created(uri).body(new DatosDetallePaciente(paciente))
+        var uri = uriBuilder.path("/pacientes/{id}").buildAndExpand(paciente.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(new DatosDetallePaciente(paciente));
     }
 
     @GetMapping
-    public Page<DatosListaPaciente> listar(@PageableDefault(size = 10, sort = {"nombre"}) Pageable paginacion) {
-        return repository.findAllByActivoTrue(paginacion).map(DatosListaPaciente::new);
+    public ResponseEntity<Page<DatosListaPaciente>> listar(@PageableDefault(size = 10, sort = {"nombre"}) Pageable paginacion) {
+        var page = repository.findAllByActivoTrue(paginacion).map(DatosListaPaciente::new);
+        return ResponseEntity.ok(page);
     }
 
     @Transactional
     @PutMapping
-    public void actualizar(@RequestBody @Valid DatosActualizacionPaciente datos) {
+    public ResponseEntity actualizar(@RequestBody @Valid DatosActualizacionPaciente datos) {
         Paciente paciente = repository.getReferenceById(datos.id());
         paciente.actualizarInformacion(datos);
+
+        return ResponseEntity.ok(new DatosDetallePaciente(paciente));
     }
 
     @Transactional
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Long id) {
+    public ResponseEntity eliminar(@PathVariable Long id) {
         Paciente paciente = repository.getReferenceById(id);
         paciente.desactivar();
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity detallar(@PathVariable Long id) {
+        Paciente paciente = repository.getReferenceById(id);
+
+        return ResponseEntity.ok(new DatosDetallePaciente(paciente));
     }
 }
