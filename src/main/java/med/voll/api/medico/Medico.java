@@ -47,10 +47,10 @@ public class Medico {
 
     public void actualizarInformaciones(@Valid DatosActualizacionMedico datos) {
         if(datos.nombre() != null){
-
+            this.nombre = datos.nombre();
         }
         if(datos.telefono() != null){
-
+            this.telefono = datos.telefono();
         }
         if(datos.direccion() != null){
             this.direccion.actualizarDireccion(datos.direccion());
