@@ -1,9 +1,11 @@
 package med.voll.api.direccion;
 
 import jakarta.persistence.Embeddable;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.medico.DatosActualizacionMedico;
 
 @Getter // Generar de forma automatica en tiempo de compilacion todos los getters 
 @NoArgsConstructor // Crear un constructor que no tiene ningun argumento
@@ -26,5 +28,10 @@ public class Direccion {
         this.ciudad = datosDireccion.ciudad();
         this.codigo_postal = datosDireccion.codigo_postal();
         this.estado = datosDireccion.estado();
+    }
+
+    public void actualizarDireccion(DatosActualizacionMedico datos) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'actualizarDireccion'");
     }
 }

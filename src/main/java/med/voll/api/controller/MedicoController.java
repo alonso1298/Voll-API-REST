@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
+import med.voll.api.medico.DatosActualizacionMedico;
 import med.voll.api.medico.DatosListaMedico;
 import med.voll.api.medico.DatosRegistroMedico;
 import med.voll.api.medico.Medico;
@@ -38,5 +39,8 @@ public class MedicoController {
 
     @Transactional
     @PutMapping
-    public void actualizar(@RequestBody @Valid DatosRegistroMedico datos){}
+    public void actualizar(@RequestBody @Valid DatosActualizacionMedico datos){
+        Medico medico = repository.getReferenceById(datos.Id());
+        medico.actualizarInformaciones(datos);
+    }
 }
