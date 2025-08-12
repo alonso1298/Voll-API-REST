@@ -7,11 +7,13 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
+import lombok.val;
 import med.voll.api.paciente.DatosListaPaciente;
 import med.voll.api.paciente.DatosRegistroPaciente;
 import med.voll.api.paciente.PaacienteRepository;
@@ -33,5 +35,12 @@ public class PacienteController {
     @GetMapping
     public Page<DatosListaPaciente> listar(@PageableDefault(size = 10, sort = {"nombre"}) Pageable paginacion) {
         return repository.findAll(paginacion).map(DatosListaPaciente::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void actualizar(@RequestBody @Valid DatosActualizacionPaciente datos) {
+        Paciente paciente = repository.getReferenceById(datos.id());
+        paciente.actualizarInformacion(datos);
     }
 }
