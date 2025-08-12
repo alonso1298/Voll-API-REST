@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import lombok.val;
+import med.voll.api.paciente.DatosActualizacionPaciente;
 import med.voll.api.paciente.DatosListaPaciente;
 import med.voll.api.paciente.DatosRegistroPaciente;
 import med.voll.api.paciente.PaacienteRepository;
