@@ -66,4 +66,13 @@ public class MedicoController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity detallar(@PathVariable Long id){ // @PathVariable  indica que la variable id es la que se va a pasar a @DeleteMapping("/{id}")
+        Medico medico = repository.getReferenceById(id);
+
+        return ResponseEntity.ok(new DatosDetalleMedico(medico));
+    }
+
+
 }
