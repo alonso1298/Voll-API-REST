@@ -1,5 +1,6 @@
 package med.voll.api.infra.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,10 +12,14 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfigurations {
+
+    @Autowired
+    private SecurityFilter securityFilter;
 
     @Bean // Reconoce que esa clase tiene que ser cargada para que Spring Boot la pueda usar
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
@@ -24,6 +29,7 @@ public class SecurityConfigurations {
                 req.requestMatchers(HttpMethod.POST, "/login").permitAll(); // Permitimos cualquier request al login con un POST
                 req.anyRequest().authenticated(); // tiene que estar autorizado en cualquier otra request
             })
+            .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class) // Agrega un filtro antes que otro
             .build();
     }
 
