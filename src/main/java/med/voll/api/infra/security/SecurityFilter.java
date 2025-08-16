@@ -25,7 +25,7 @@ public class SecurityFilter extends OncePerRequestFilter{
         if(authorizationHeader == null){
             throw new RuntimeException("Token JWT no enviado en el encabezado de Authorization");
         }
-        return authorizationHeader;
+        return authorizationHeader.replace("Bearer ", "");
     }
 
 }
