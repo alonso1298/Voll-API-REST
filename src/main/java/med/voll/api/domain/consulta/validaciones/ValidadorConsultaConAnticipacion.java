@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import med.voll.api.domain.ValidacionException;
 import med.voll.api.domain.consulta.DatosReservaConsulta;
 
-public class ValidacionConsultaConAnticipacion {
+public class ValidadorConsultaConAnticipacion {
 
     public void validar(DatosReservaConsulta datos) {
 
