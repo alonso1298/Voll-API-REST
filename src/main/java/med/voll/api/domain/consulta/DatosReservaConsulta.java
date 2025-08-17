@@ -10,6 +10,6 @@ public record DatosReservaConsulta(
     @NotNull
     Long idPaciente,
     @NotNull
-    @Future
+    @Future // Future indica que no puede ser una fecha anterior a la actual
     LocalDateTime fecha
 ) {}
