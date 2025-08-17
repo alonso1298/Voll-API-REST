@@ -1,4 +1,4 @@
-package med.voll.api.domain.consulta.validaciones;
+package med.voll.api.domain.consulta.validaciones.cancelaminto;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import med.voll.api.domain.ValidacionException;
 import med.voll.api.domain.consulta.ConsultaRepository;
 import med.voll.api.domain.consulta.DatosCancelamientoConsulta;
-import med.voll.api.domain.consulta.ValidadorCancelamientoDeConsulta;
 
 @Component
 public class ValidadorHorarioConAnticipacion implements ValidadorCancelamientoDeConsulta{
