@@ -10,7 +10,7 @@ import med.voll.api.domain.ValidacionException;
 import med.voll.api.domain.consulta.ConsultaRepository;
 import med.voll.api.domain.consulta.DatosCancelamientoConsulta;
 
-@Component
+@Component("ValidadorConsultaConAnticipacionCancelamiento")
 public class ValidadorHorarioConAnticipacion implements ValidadorCancelamientoDeConsulta{
 
     @ Autowired

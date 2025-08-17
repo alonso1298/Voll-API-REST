@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import med.voll.api.domain.ValidacionException;
 import med.voll.api.domain.consulta.DatosReservaConsulta;
 
-@Component
+@Component("ValidadorConsultaConAnticipacionReserva")
 public class ValidadorConsultaConAnticipacion implements ValidadorDeConsultas{
 
     public void validar(DatosReservaConsulta datos) {
