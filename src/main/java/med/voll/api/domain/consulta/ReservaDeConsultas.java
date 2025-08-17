@@ -1,9 +1,12 @@
 package med.voll.api.domain.consulta;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import med.voll.api.domain.ValidacionException;
+import med.voll.api.domain.consulta.validaciones.ValidadorDeConsultas;
 import med.voll.api.domain.medico.Medico;
 import med.voll.api.domain.medico.MedicoRepository;
 import med.voll.api.domain.paciente.PacienteRepository;
@@ -20,6 +23,9 @@ public class ReservaDeConsultas {
     @Autowired
     private ConsultaRepository consultarepository;
 
+    @Autowired
+    private List<ValidadorDeConsultas> validadores; // Reconoce todas las clases que implementan la interfaz y crea una lista con todas esas clases
+
     public void reservar(DatosReservaConsulta datos){
 
         if (!pacienteRepository.existsById(datos.idPaciente())) {
@@ -31,6 +37,7 @@ public class ReservaDeConsultas {
         }
 
         // Validaciones
+        validadores.forEach(v -> v.validar(datos));
 
         var medico = elegirMedico(datos);
         var paciente = pacienteRepository.findById(datos.idPaciente()).get();
