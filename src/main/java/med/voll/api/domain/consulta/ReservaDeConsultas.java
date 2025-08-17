@@ -26,6 +26,9 @@ public class ReservaDeConsultas {
     @Autowired
     private List<ValidadorDeConsultas> validadores; // Reconoce todas las clases que implementan la interfaz y crea una lista con todas esas clases
 
+    @Autowired
+    private List<ValidadorCancelamientoDeConsulta> validadoresCancelamiento;
+
     public DatosDetalleConsulta reservar(DatosReservaConsulta datos){
 
         if (!pacienteRepository.existsById(datos.idPaciente())) {
@@ -64,6 +67,9 @@ public class ReservaDeConsultas {
         if (!consultarepository.existsById((datos.idConsulta()))) {
             throw new ValidacionException("Id de la consulta informado no existe");
         }
+
+        validadoresCancelamiento.forEach(v -> v.validar(datos));
+
         var consulta = consultarepository.getReferenceById((datos.idConsulta()));
         consulta.cancelar(datos.motivo());
     }
