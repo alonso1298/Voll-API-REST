@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
+import med.voll.api.domain.medico.Especialidad;
 
 public record DatosReservaConsulta(
     Long idMedico,
@@ -11,5 +12,6 @@ public record DatosReservaConsulta(
     Long idPaciente,
     @NotNull
     @Future // Future indica que no puede ser una fecha anterior a la actual
-    LocalDateTime fecha
+    LocalDateTime fecha,
+    Especialidad especialidad
 ) {}

@@ -37,6 +37,13 @@ public class ReservaDeConsultas {
     }
 
     private Medico elegirMedico(DatosReservaConsulta datos) {
-        
+        if(datos.idMedico() != null){
+            return medicoRepository.getReferenceById(datos.idMedico()); // Usamos getReferenceById ya que se le asignara a una variable, si tuvieramos que manipular la informacion seria mejor findById
+        }
+        if (datos.especialidad() == null) {
+            throw new ValidacionException("Es necesario una especialidad cuando no se elige un medico");
+        }
+
+        return medicoRepository.elegirMedicoAleatorioDisponibleEnLaFecha(datos.especialidad(), datos.fecha());
     }
 }
