@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import med.voll.api.domain.consulta.DatosReservaConsulta;
 
 @RestController
 @RequestMapping("consultas")
@@ -17,6 +18,6 @@ public class ConsultaController {
     @Transactional
     public ResponseEntity reservar(@RequestBody @Valid DatosReservaConsulta datos){
         System.out.println(datos);
-        return ResponseEntity.ok(new DatosdetalleConsulta())
+        return ResponseEntity.ok(new DatosDetalleConsulta())
     }
 }
