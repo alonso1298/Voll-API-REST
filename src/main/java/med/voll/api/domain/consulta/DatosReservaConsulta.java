@@ -14,4 +14,5 @@ public record DatosReservaConsulta(
     @Future // Future indica que no puede ser una fecha anterior a la actual
     LocalDateTime fecha,
     Especialidad especialidad
-) {}
+) {
+}
