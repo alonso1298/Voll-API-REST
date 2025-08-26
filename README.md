@@ -1,7 +1,6 @@
 # Voll-Med API REST
 
-**Voll-Med API REST** es una aplicación desarrollada con **Spring Boot** como parte de tu aprendizaje en desarrollo backend. Permite gestionar operaciones típicas de una clínica médica, como registro de pacientes, citas o historial clínico (ajusta según lo que implementaste).
-
+**Voll-Med API REST** es una aplicación desarrollada con **Spring Boot** como parte de tu aprendizaje en desarrollo backend. Permite gestionar operaciones típicas de una clínica médica, como registro de pacientes, medicos y citas.
 ---
 
 ## 🚀 Tecnologías principales
