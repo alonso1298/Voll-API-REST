@@ -11,8 +11,8 @@
 - Spring Security (opcional)
 - Validación de datos con Bean Validation (`@Valid`)
 - Lombok (para reducir boilerplate)
-- Flyway (para migración de base de datos, si aplica)
-- MySQL (o H2 si es in-memory)
+- Flyway (para migración de base de datos)
+- MySQL 
 - Maven para gestión del proyecto
 
 ---
@@ -37,7 +37,7 @@ Voll-Med-API-REST/
 ```
 ## ⚙️ Requisitos
 - JDK 17 o superior
-- Base de datos (MySQL o H2)
+- Base de datos (MySQL)
 - Maven
 
 ## ▶️ Cómo ejecutar el proyecto
@@ -76,7 +76,7 @@ DELETE /pacientes/{id}         - Eliminar paciente (o dar de baja)
 - Uso de DTOs, mapeo de entidades y repositorios
 - Validación de peticiones con @Valid
 - Gestión de seguridad (JWT, roles, si aplica)
-- Migraciones de base de datos con Flyway (si aplica)
+- Migraciones de base de datos con Flyway
 - Documentar API con SpringDoc
 - Añadir pruebas unitarias e integración (JUnit, Mockito)
 - Implementar autenticación y autorización con Spring Security
